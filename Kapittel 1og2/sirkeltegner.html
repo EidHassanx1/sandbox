@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+
+<script type="text/javascript">
+
+  window.onload = oppstart;
+
+  function oppstart() {
+    document.getElementById("tegneflate").onmousemove = flyttMus;
+  }
+  function flyttMus (evt) {
+    var ctx = document.getElementById("tegneflate").getContext("2d");
+    ctx.beginPath();
+    ctx.arc(evt.clientX , evt.clientY, 30, 0, 20 * Math.PI);
+    ctx.stroke();
+  }
+</script>
+<style>
+    #tegneflate {
+      position: absolute;
+      top: 50;
+      left: 50;
+      border-style: solid;
+    }
+    body {
+      background-color: orange;
+    }
+</style>
+
+  <body>
+    <canvas id="tegneflate" width="1500" height="700"></canvas>
+  </body>
+</html>

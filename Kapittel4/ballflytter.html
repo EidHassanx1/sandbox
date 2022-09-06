@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+<script type="text/javascript">
+
+  window.onload = oppstart;
+  var ballX = 400;
+  var ballY = 400;
+  var musX = 0;
+  var musY = 0;
+
+  function oppstart() {
+    document.getElementById("tegneflate").onmousemove = musFlyttet;
+    setInterval("flyttBall() " ,10) ;
+  }
+  function musFlyttet(evt) {
+    musX = evt.clientX;
+    musY = evt.clientY;
+  }
+  function flyttBall() {
+    if (ballX > musX) {
+      ballX -= 5;
+    }
+    else {
+      ballX += 5;
+    }
+    if (ballY > musY) {
+      ballY -= 5;
+    }
+    else {
+      ballY += 5;
+    }
+    var canvas = document.getElementById("tegneflate");
+    var ctx = canvas.getContext("2d");
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    ctx.beginPath();
+    ctx.arc(ballX, ballY, 40, 0, 2 * Math.PI);
+    ctx.fillStyle = "blue";
+    ctx.fill();
+    ctx.lineWidth = 5;
+    ctx.strokeStyle = "yellow";
+    ctx.stroke();
+  }
+</script>
+<style media="screen">
+  #tegneflate {
+    border-style:solid;
+    position:absolute;
+    top: 0;
+    left: 0;
+  }
+  body {
+    background-color: red;
+  }
+</style>
+  <body>
+    <canvas id="tegneflate" width="1500" height="800"></canvas>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <script type="text/javascript">
+    window.onload = oppstart;
+
+    function oppstart() {
+      document.getElementById("btnGenerer").onclick = beregn;
+    }
+    function beregn() {
+      var navn = document.getElementById("txtNavn").value;
+      var kjonn = document.getElementById("lstkjonn").value;
+      var alder = document.getElementById("txtAlder").value;
+
+      var aarTill100 = 100 - alder;
+
+      var historie = "Det var en " + kjonn + " som het " + navn + " og var " + alder + " år gammel.<br />";
+      historie = historie + "Denne personen hadde " + aarTill100 + "år igjen til 100-årsdagen.";
+
+      document.getElementById("historie").innerHTML = historie;
+      document.getElementById("txtNavn").innerHTML = name;
+    }
+  </script>
+  <body>
+    <p> Navn: <input type="text" id="txtNavn" /><br />
+      Kjønn: <select id="lstkjonn"><option value="gutt">Gutt</option><option value="jente">Jente</option></select><br />
+      Alder: <input type="number" min="0" max="120" id="txtAlder" /><br />
+      <button id="btnGenerer" type="button">Generer historie</button></p>
+    <p id="historie"></p>
+    <p id="txtNavn"><p>
+  </body>
+</html>

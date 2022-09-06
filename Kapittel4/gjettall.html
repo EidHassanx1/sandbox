@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Tallet er ikke 50</title>
+  </head>
+  <script type="text/javascript">
+    window.onload = oppstart;
+    var hemmeligTall;
+    var forsøkIgjen;
+
+    function oppstart() {
+      hemmeligTall = 81;
+      forsøkIgjen = 10;
+      document.getElementById("btnGjett").onclick = gjett;
+      document.getElementById("btnReset").onclick = reset;
+    }
+    function gjett() {
+      forsøkIgjen--;
+      var tall = document.getElementById("txtTall").value;
+      if (tall == hemmeligTall) {
+        document.getElementById("melding").innerHTML = "Gratulerer lille venn du klarte det";
+        document.getElementById("btnGjett").disabled = true;
+      }
+      else if (forsøkIgjen <=0) {
+        document.getElementById("melding").innerHTML= "Å nei Å nei Å nei Å nei lille venn du tapte. Vil du prøve på nytt? BTW, det hemmelige tallet var: " + hemmeligTall;
+        document.getElementById("btnGjett").disabled = true;
+      }
+      else if (tall < hemmeligTall) {
+        document.getElementById("melding").innerHTML = "Litt mer cutie";
+      }
+      else if (tall > hemmeligTall) {
+        document.getElementById("melding").innerHTML = "Litt mindre cutie";
+      }
+    }
+    function reset() {
+      location.reload();
+    }
+  </script>
+
+  <body>
+    <p>Tall: <input type="text" id="txtTall" /></p>
+    <button id="btnGjett">Gjett</button><button id="btnReset">Start på nytt</button>
+    <p id="melding"></p>
+  </body>
+</html>

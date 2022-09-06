@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <script type="text/javascript">
+  window.onload = oppstart
+
+  var antall = 0;
+
+  function oppstart() {
+    document.getElementById("btnKlikk").onclick = klikket;
+  }
+  function klikket() {
+    antall = antall+1;
+    document.getElementById("antKlikk").innerHTML = antall;
+   if (antall == 20) {
+    document.getElementById("melding").innerHTML = "HAHHAAHAHAH";
+}
+}
+  </script>
+  <body>
+    <button id="btnKlikk">Klikk meg!</button>
+    <p>Knappen  er trykket <span id="antKlikk">0</span></p>
+    <p id="melding"></p>
+  </body>
+</html>
