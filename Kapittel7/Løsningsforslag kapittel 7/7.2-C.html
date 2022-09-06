@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Gjennomsnitt</title>
+</head>
+
+<body>
+	
+	<p>Skriv inn det første tallet<p/> <input type="text" id="txtTallEn" />
+	<p>Skriv inn det andre tallet..<p/> <input type="text" id="txtTallTo" /><br /><br />
+	<button id="btnSjekk">Sjekk</button><br />
+     <p id="utskrift">Her kommer svaret<p/>
+		
+	<script>
+	
+		window.onload = oppstart;
+			
+		function oppstart()
+		{	
+		document.getElementById("btnSjekk").onclick = settVerdi;
+		}
+	
+		function settVerdi()
+		{
+		var tall1 = parseInt(document.getElementById("txtTallEn").value);
+		var tall2 = parseInt(document.getElementById("txtTallTo").value);
+		document.getElementById("utskrift").innerHTML = gjenomsnitt(tall1,tall2);
+		}
+		
+		function gjenomsnitt(tall1, tall2) 
+		{
+		return ((tall1 + tall2) / 2);
+		}
+
+	
+	</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <script type="text/javascript">
+
+  window.onload = oppstart;
+
+  var avstandListe = [];
+  avstandListe[0] = [0, 22, 41, 71, 113];
+  avstandListe[1] = [22, 0, 21, 51, 93];
+  avstandListe[2] = [41, 21, 0, 30, 72];
+  avstandListe[3] = [71, 51, 30, 0, 43];
+  avstandListe[4] = [113, 93, 72, 43, 0];
+
+  var sted = ["Arendal", "Grimstad", "Lillesand", "Kristiansand", "Mandal"];
+
+  function oppstart() {
+
+    for (var i = 0; i < sted.lenght; i++) {
+      var valg1 = document.createElement("option");
+      valg1.innerHTML = sted[i];
+      valg1.value = i;
+      document.getElementById("lstFra").appendChild(valg1);
+
+      var valg2 = document.createElement("option");
+      valg2.innerHTML = sted[i];
+      valg2.value = i;
+      document.getElementById("lstTil").appendChild(valg2);
+    }
+    document.getElementById("btnBeregn").onclick = beregn;
+  }
+  function beregn() {
+    var fraIndex = document.getElementById("lstFra").value;
+    var tilIndex = document.getElementById("lstTil").value;
+
+    var avstand = avstandListe[fraIndex] [tilIndex];
+
+    document.getElementById("utskrift").innerHTML = "Avstand fra " + sted[fraIndex] + " til " + sted[tilIndex] + " er " + avstand + " km";
+  }
+  </script>
+  <body>
+    <p>
+      Fra: <select id="lstFra"></select>
+      Til: <select id="lstTil"></select>
+      <button id="btnBeregn">Beregn</button>
+    </p>
+    <p id="utskrift"></p>
+  </body>
+</html>
