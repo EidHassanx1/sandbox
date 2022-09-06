@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <script type="text/javascript">
+
+    window.onload = oppstart;
+
+    function oppstart() {
+      document.getElementById("leggtil").onclick = leggtil;
+    }
+    function leggtil() {
+      var tid = new Date();
+      var nyttElement = document.createElement("li");
+
+      nyttElement.innerHTML = tid.getHours() + ":" + tid.getMinutes() + ":" + tid.getSeconds() + "    " + tid.getDate() + "." + tid.getMonth();
+
+      document.getElementById("tider").appendChild(nyttElement);
+    }
+  </script>
+  <body>
+    <h1>Rundetider</h1>
+    <p>Legg til ny tid!</p>
+    <p id="leggtil">Klikk her</p>
+    <h3>Tider</h3>
+    <ol id="tider">
+    </ol>
+  </body>
+</html>
