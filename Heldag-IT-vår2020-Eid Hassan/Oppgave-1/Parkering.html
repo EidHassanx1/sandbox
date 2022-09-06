@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <script type="text/javascript">
+
+  window.onload = oppstart;
+
+  function oppstart() {
+    document.getElementById("btnBeregn").onclick = beregn;
+  }
+  function beregn() {
+    var minutter = document.getElementById("txtMinutter").value;
+    var timer = document.getElementById("txtTimer").value;
+
+    var pris = timer + (minutter * 2);
+
+    if (timer > 1) {
+      document.getElementById("txtMinutter").value;
+
+    var pris = minutter + timer;
+    }
+
+    document.getElementById("pris").innerHTML = "Pris for parkeringen er: " + pris;
+
+  }
+
+  </script>
+  <body>
+    <p>Antall minutter: <input type="text" id="txtMinutter"><p>
+    <p>Antall timer.....: <input type="text" id="txtTimer"></p>
+    <button id="btnBeregn">Beregn</button> <button onclick="window.location.reload();">Start på nytt!</button>
+      <br/> <br/>
+    <p id="pris"></p>
+  </body>
+  /* jeg lager to steder der jeg kan sette inn antall minutter og kan sette inn antall timer.
+  og gir dem id - txtMinutter og txtTimer.
+  lager også to knapper som kan beregne minuttene og timene tilsammen og en til å starte nettsiden på nytt!
+  det siste jeg lager er en paragraf som viser prisen du må betale for parkeringen etter du trykker på knappen.
+  I funksjonen så gir jeg id- txtMinutter og id- txtTimer navnene minutter og timer i (var).
+  Deretter viser jeg utregningen til parkeringen der det som står i minutter skal ganges med 2 og skal plusses med hva
+  enn som står i timer.
+  Lager en if funksjon der hvis tallet som står i timer er større enn 1, skal minuttene ikke ganges med 2.
+
+  */
+</html>
