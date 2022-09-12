@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cheat Sheet: Array og Objekter</title>
+</head>
+<body>
+
+    <script>
+        //deklarere en variabel
+        const handleliste = ["Brød", "Sjokolade", "Egg", "Melk", "Halalpølse", "Ost"]
+        console.log(handleliste)
+        
+        //hente størrelsen (antall elementer) i en variabel
+        const antallVarer = handleliste.length
+        console.log("Handleliste inneholder " + antallVarer + " varer")
+
+        //skrive ut et bestemt element fra handlelisten
+        const vare2 = handleliste[1]
+        console.log("VAren på rad 2 i handlelisten er " + vare2)
+
+        //Skrive ut et bestemt element med dynamisk index fra variabel
+        const index = 4
+        const indexVare = handleliste[index]
+        console.log(`Varen på rad ${index + 1} i handlelisten er ${indexVare}`)
+
+        //sortere alfabetisk
+        handleliste.sort()
+        //Sortering er case-sensitivt (store bokstaver prioriteres)
+        handleliste.reverse()
+        console.log(handleliste)
+
+        //legge til en rad i arrayen på slutten av arrayen
+        handleliste.push("Pølsebrød", "Ketchup")
+        console.log(handleliste)
+
+        //legge til en rad i starten av arrayen
+        handleliste.unshift("Potetsalat")
+        console.log(handleliste)
+
+    </script>
+</body>
+</html>
