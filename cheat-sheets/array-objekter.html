@@ -6,7 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cheat Sheet: Array og Objekter</title>
 </head>
+<style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 21px;
+        background: #f3f3f3;
+    }
+
+    #products {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+    }
+
+    article {
+        background-color: #fff;
+        padding: 1rem;
+        border: 1px solid #ccc;
+    }
+</style>
 <body>
+    <h2>Handleliste</h2>
+    <ul id="handleliste">
+    </ul>
+
+    <h2>Produkter</h2>
+    <section id="products">
+
+    </section>
 
     <script>
         //deklarere en variabel
@@ -39,6 +66,70 @@
         //legge til en rad i starten av arrayen
         handleliste.unshift("Potetsalat")
         console.log(handleliste)
+
+        //skjekk: finnes sjokolade i handlelisten?
+        const vareSjekk = handleliste.includes("Sjokolade")
+        console.log(vareSjekk)
+
+        //sjekk: hvilken index har ost?
+        const vareIndexSjekk = handleliste.indexOf("Ost")
+        console.log("Index til ost: " + vareIndexSjekk)
+
+        //liste opp arrayen i HTML (vise på nettsiden)
+        //<li>Varenavn</li>
+        handleliste.map(vare => document.getElementById("handleliste").innerHTML += `<li>${vare}</li>`)
+
+        //Opprette objekt med nøkkel-verdi-par
+        const prod1 = {
+            produsent: "Nike",
+            model: "Air Zoom",
+            sport: "Running",
+            color: "Red"
+        }
+
+        //srkive ut objekt-data til HTML
+        const prodSport = prod1.sport
+        console.log(prodSport)
+
+        //Nytt objekt - alene eller i et register (organisert data)
+        //Produktregister: flerdimensjonale arrayer (arrayer med objekter) tenk excel
+        const productRegister = [
+            {
+                produsent: "Nike",
+                model: "Air Zoom",
+                sport: "Running",
+                color: "Red"
+            },
+            {
+                produsent: "Nike",
+                model: "Kobe 6",
+                sport: "Basketball",
+                color: "White"
+            },
+            {
+                produsent: "Adidas",
+                model: "Messi",
+                sport: "Fotball",
+                color: "SVart"
+            },
+            {
+                produsent: "Nike",
+                model: "HyperZoom",
+                sport: "Fotball",
+                color: "Red"
+            }
+        ]
+        console.log(productRegister)
+
+
+
+        //Skrive ut produkter fra registrert (map)
+        productRegister.map(product => document.getElementById("products").innerHTML += `
+        <article>
+        <h3>${product.produsent} ${product.model}</h3>
+        <p>Idrett: ${product.sport} / Farge: ${product.color}</p>
+        </article>
+        `)
 
     </script>
 </body>
