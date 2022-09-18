@@ -127,7 +127,8 @@
     <section id="gamearea">
         <div id="playerSigns">
             <h2 id="instruction">Play your hand:<span id="choice"></span></h2>
-            <button type="button" onClick="playy('rock')" id="rockButton" class="playerChoice"><img src="rock.jpg" alt="Rock" /></button>
+            <button type="button" onClick="play('rock')" id="rockButton" class="playerChoice"><img src="rock.jpg" alt="Rock" /></button>
+            <!--Nr.1 Det var stavefeil i play med en ekstra y-->
             <button type="button" onClick="play('paper')" id="paperButton" class="playerChoice"><img src="paper.jpg" alt="Paper" /></button>
             <button type="button" onClick="play('scissors')" id="scissorsButton" class="playerChoice"><img src="scissors.jpg" alt="Scissors" /></button>
         </div>
@@ -162,7 +163,8 @@
          * On mouseover, show the alt-text of the image inside the button and add animation class
          * On mouseout, remove the text and class
          */
-        buttonss.forEach(button => {
+        buttons.forEach(button => {
+        //Nr.3 Har var det ekstra s i buttons
             button.addEventListener("mouseover", (event) => {
                 document.getElementById("choice").innerHTML = button.childNodes[0].alt
                 document.getElementById("choice").setAttribute("class","choiceAnimate")
@@ -203,7 +205,8 @@
             //Lets write the computer selection to the console to make sure we have a valid hit:
             console.log("Computer selected: " + computerSign)
             // Good! Now we also have to show this on the website, by making #computer visible and filling it with HTML:
-            const computer = document.getElementByID("computer")
+            const computer = document.getElementById("computer")
+            //Nr.4 Her var det skrivefeil der det var en stor D når det skal være en liten
 
             computer.style.display = "block"
             /* OPPGAVE 2.1: FORKLAR HVA SOM SKJER PÅ LINJE 208
@@ -252,10 +255,19 @@
             const winnerDiv = document.getElementById("winner")
             winnerDiv.style.display = "block"
 
+            //Oppgave 3
             winnerDiv.innerHTML = "The winner is " + winner
+            if (winner = "player") {
+            document.body.style.backgroundColor = "red"
+            else (winner = "computer" && "undecided") {
+                document.body.style.backgroundColor = "yellow"
+            }
+        }
+
             /* OPPGAVE 2.2: FORKLAR HVA SOM SKJER PÅ LINJE 254
              * _ditt svar her_
-             
+             Det som skjer er at når en kamp er ferdig så skal vi få kommandoen winner til å kjøre og teksten til å komme opp i
+             winnerDiv som allerede skal vises som "block"
              */
 
             //Now, lastly, let's update the counter on how many games we have played:
@@ -264,6 +276,7 @@
             document.getElementById("counter").innerHTML = counter
             /* OPPGAVE 2.3: FORKLAR HVA SOM SKJER PÅ LINJE 262
              * _ditt svar her_ 
+             Det som skjer er at variabelen counter vises som tekst der det blir det blir lagt til 1 for hver gang man spiller.
              */
 
             //And display the button for playing again:
@@ -289,7 +302,8 @@
         }
 
         //Function for random numnber, fetched from MDN web docs:
-        unction getRandomInt(max) {
+        function getRandomInt(max) {
+        //Nr.2 Her manglet det en f i function
             return Math.floor(Math.random() * max);
         }
     </script>
