@@ -257,12 +257,20 @@
 
             //Oppgave 3
             winnerDiv.innerHTML = "The winner is " + winner
-            if (winner = "player") {
-            document.body.style.backgroundColor = "red"
-            else (winner = "computer" && "undecided") {
+            /*if (winner = "player") {
+
+            }
+            */
+
+            if (winner == "player") {
+            document.body.style.backgroundColor = "#FFD700"
+            }
+            if (winner == "computer") {
                 document.body.style.backgroundColor = "yellow"
             }
-        }
+            if (winner == "undecided") {
+                document.body.style.backgroundColor = "yellow"
+            }
 
             /* OPPGAVE 2.2: FORKLAR HVA SOM SKJER PÅ LINJE 254
              * _ditt svar her_
@@ -281,7 +289,13 @@
 
             //And display the button for playing again:
             document.getElementById("replay").style.display = "block"
+        
+            //Oppgave 4
+            if (counter >= 1) {
+            document.getElementById("counter").style.color = "red"
         }
+        
+    }
 
         //Now, we need to make a function that restarts the game. This means setting all 
         //variables and values back to their initial state, so nothing is selected as we start:
