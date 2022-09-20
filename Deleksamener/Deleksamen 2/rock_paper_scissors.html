@@ -143,6 +143,9 @@
         </div>
         <div id="counterBox">
             <div>Number of games played: <span id="counter">0</span></div>
+            <div>Payer have won: <span id="playerWins">0</span></div>
+            <div>Computer have won: <span id="computerWins">0</span></div>
+            <div>Draws: <span id="draws">0</span></div>
             <!-- A hidden button to show after a game, that resets and let the player play again -->
             <button id="replay" onClick="restartGame()">Play again</button>
         </div>
@@ -153,6 +156,9 @@
         let winner = ""
         //And prepare a counter-variable for number of games played:
         let counter = 0
+        let playerWins = 0
+        let computerWins = 0
+        let draws = 0
         //Make available signs available in code as an array
         const signs = ["rock", "paper", "scissors"]
         
@@ -255,21 +261,24 @@
             const winnerDiv = document.getElementById("winner")
             winnerDiv.style.display = "block"
 
-            //Oppgave 3
+            //Oppgave 3 og 5
             winnerDiv.innerHTML = "The winner is " + winner
-            /*if (winner = "player") {
 
-            }
+            /*Får winnerDiv til å forkskjellige bakgrunnsfarger som kommer ann på utkomsten av stein saks papir
+            får også elementet winnner til å kunne bli endret ved å putte inn innnerHTML og teksten jeg vil skal komme opp.
             */
-
             if (winner == "player") {
-            document.body.style.backgroundColor = "#FFD700"
+            winnerDiv.style.backgroundColor = "blue"
+            document.getElementById("winner").innerHTML = "You Win"
+            //velger å ha bakgrunssfarge som blå siden det er enklere å se og lese
             }
             if (winner == "computer") {
-                document.body.style.backgroundColor = "yellow"
+            winnerDiv.style.backgroundColor = "#006b5e"
+            document.getElementById("winner").innerHTML = "You Lost"
             }
             if (winner == "undecided") {
-                document.body.style.backgroundColor = "yellow"
+            winnerDiv.style.backgroundColor = "#006b5e"
+            document.getElementById("winner").innerHTML = "Its a tie"
             }
 
             /* OPPGAVE 2.2: FORKLAR HVA SOM SKJER PÅ LINJE 254
@@ -280,12 +289,22 @@
 
             //Now, lastly, let's update the counter on how many games we have played:
             counter = counter + 1
+            /*playerWins = + 1
+            computerWins = + 1
+            draws = + 1
+            */
 
             document.getElementById("counter").innerHTML = counter
             /* OPPGAVE 2.3: FORKLAR HVA SOM SKJER PÅ LINJE 262
              * _ditt svar her_ 
-             Det som skjer er at variabelen counter vises som tekst der det blir det blir lagt til 1 for hver gang man spiller.
+             Det som skjer er at vi får elementet "counter" til å kunne bli endret i det indre HTMl delen.
+             Den viser også antall ganger vi har spilt.
              */
+            /*
+            document.getElementById("playerWins").innerHTML = playerWins
+            document.getElementById("computerWins").innerHTML = computerWins
+            document.getElementById("draws").innerHTML = draws
+            */
 
             //And display the button for playing again:
             document.getElementById("replay").style.display = "block"
@@ -296,7 +315,6 @@
         }
         
     }
-
         //Now, we need to make a function that restarts the game. This means setting all 
         //variables and values back to their initial state, so nothing is selected as we start:
         function restartGame() {
