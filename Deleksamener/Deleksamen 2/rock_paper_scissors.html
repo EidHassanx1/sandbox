@@ -256,6 +256,50 @@
                     winner = "player"
                 }
             }
+            //Oppgave 8
+            /*
+            if (playerSign === computerSign) {
+                    winner = "undecided"
+            } else if (playerSign !== computerSign) {
+                    winner = 
+                }
+
+            if(playerSign === "paper") {
+                if(computerSign === "rock") {
+                    winner = "player"
+                }
+                if(computerSign === "scissors") {
+                    winner = "computer"
+                }
+                if(computerSign === "paper") {
+                    winner = "undecided"
+                }
+            }*/
+            /*
+            if(playerSign === "rock") {
+                if(computerSign === "rock") {
+                    winner = "undecided"
+                }
+                if(computerSign === "scissors") {
+                    winner = "player"
+                }
+                if(computerSign === "paper") {
+                    winner = "computer"
+                }
+            }
+            if(playerSign === "scissors") {
+                if(computerSign === "rock") {
+                    winner = "computer"
+                }
+                if(computerSign === "scissors") {
+                    winner = "undecided"
+                }
+                if(computerSign === "paper") {
+                    winner = "player"
+                }
+                */
+
+
             //Now we have checks to set the winner. Let's write it to the website.
             //Now you know the drill: show #winner by display: block and fill it with HTML:
             const winnerDiv = document.getElementById("winner")
@@ -288,24 +332,34 @@
              */
 
             //Now, lastly, let's update the counter on how many games we have played:
+            
             counter = counter + 1
-            /*playerWins = + 1
-            computerWins = + 1
-            draws = + 1
-            */
+           
+            //Oppgave 6
+            if (winner == "player") {
+                playerWins ++
+                document.getElementById("playerWins").innerHTML = playerWins
+                
+            }
+            if (winner == "computer") {
+                computerWins ++
+                document.getElementById("computerWins").innerHTML = computerWins
+            }
+            if (winner == "undecided") {
+                draws ++
+                document.getElementById("draws").innerHTML = draws
+            }
 
+            
+            //document.getElementById("computerWins").innerHTML = computerWins
+            //document.getElementById("draws").innerHTML = draws
+            
             document.getElementById("counter").innerHTML = counter
             /* OPPGAVE 2.3: FORKLAR HVA SOM SKJER PÅ LINJE 262
              * _ditt svar her_ 
              Det som skjer er at vi får elementet "counter" til å kunne bli endret i det indre HTMl delen.
              Den viser også antall ganger vi har spilt.
              */
-            /*
-            document.getElementById("playerWins").innerHTML = playerWins
-            document.getElementById("computerWins").innerHTML = computerWins
-            document.getElementById("draws").innerHTML = draws
-            */
-
             //And display the button for playing again:
             document.getElementById("replay").style.display = "block"
         
@@ -313,8 +367,15 @@
             if (counter >= 1) {
             document.getElementById("counter").style.color = "red"
         }
-        
     }
+
+        //oppgave 7
+        /*const myTimeout = setTimeout(winner, 1000);
+        function winner() {document.winnerDiv}
+        setTimeout(function() {winnerDiv.innerHTML}, 1000)
+        */
+
+
         //Now, we need to make a function that restarts the game. This means setting all 
         //variables and values back to their initial state, so nothing is selected as we start:
         function restartGame() {
