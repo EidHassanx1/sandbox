@@ -1,3 +1,24 @@
 body {
     background-color: cyan;
 }
+header {
+    background-color: darkolivegreen;
+    grid-area: hd;
+}
+.navigasjon {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    align-items: right;
+    height: 100%;
+}
+nav li {
+    margin: 0 10px;
+}
+
+
+
+footer {
+    background-color: lightgray;
+    padding: 1rem;
+}
