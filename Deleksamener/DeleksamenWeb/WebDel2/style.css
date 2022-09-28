@@ -1,5 +1,5 @@
 body {
-    background-color: cyan;
+   
     margin: 0;
 }
 
@@ -8,7 +8,7 @@ nav li {
     grid-area: nav;
 }
 nav {
-    background-color: lightblue;
+    background-color: chocolate;
     height: 4rem;
 }
 .logo {
@@ -20,7 +20,7 @@ nav {
 }
 #logo {
     height: 4rem;
-    background-color: lightblue;
+    background-color: chocolate;
 } 
 
 .navigasjon {
@@ -33,7 +33,7 @@ nav {
 }
 
 header {
-    background-color: lightblue;
+    background-color: chocolate;
     height: 4rem;
     grid-area: header;
 }
@@ -65,10 +65,19 @@ main article {
 }
 
 
+
+article h3 {
+    text-align: center;
+}
+article p {
+    text-align: center;
+}
+
 img {
     height: 200px;
     width: 300px;
 }
+
 
 footer {
     background-color: chocolate;
