@@ -1,64 +1,10 @@
 body {
-   
+    background-color: cyan;
     margin: 0;
 }
 
-nav li {
-    margin: 0 10px;
-    grid-area: nav;
-}
-
-nav li a {
-    padding-top: 2rem;
-}
-
-nav {
-    background-color: chocolate;
-    height: 6rem;
-}
-
-#logo {
-    grid-area: logo;
-    display: flex;
-    background-color: chocolate;
-    height: 6rem;
-    justify-content: center;
-}
-#logo a {
-    padding-top: 2rem;
-}
-/*
-#logo {
-    grid-area: logo;
-    display: flex;
-    height: 6rem;
-    background-color: chocolate;
-    justify-content: center;
-}
-
-.logo img {
-    display: grid;
-    place-items: center;
-}
-*/
-
-.navigasjon {
-    overflow: auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: right;
-    height: 100%;
-}
-
-header {
-    background-color: chocolate;
-    height: 6rem;
-    grid-area: header;
-    text-align: center;
-}
-
 #grid-container {
+    margin: 0px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 50px 1fr 50px;
@@ -66,6 +12,67 @@ header {
                         "main main main"
                         "footer footer footer";
 }
+
+#logo {
+    grid-area: logo;
+    margin: 0px;
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+    align-items: left;
+    background-color: chocolate;
+    height: 10rem;
+}
+
+nav {
+    height: 5rem;
+    margin: 0px;
+}
+
+nav li {
+    margin: 0 10px;
+    grid-area: nav;
+    justify-content: center;
+    margin: 5%;
+    
+}
+
+.button1 {
+    border: 2px solid green;
+    background-color: white;
+}
+
+.navigasjon {
+    margin: 0px;
+    overflow: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: right;
+    height: 10rem;
+    background-color: chocolate;
+}
+
+header {
+    margin: 0px;
+    height: 10rem;
+    grid-area: header;
+    text-align: center;
+    background-color: chocolate;
+}
+
+#headerbilde {
+    grid-area: logo header nav;
+}
+
+/*
+#grid-container {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    grid-template-rows: 50px;
+    grid-template-areas: "logo header";
+}
+*/
 
 main {
     grid-area: main;
@@ -75,7 +82,7 @@ main {
     align-items: center;
     height: 100%;
     width: auto;
-    
+    min-height: 750px;
 }
 
 main article {
@@ -85,11 +92,6 @@ main article {
     padding: 1rem;
     margin: 5rem;
     border: 1px solid purple;
-}
-
-.bilde1 {
-    grid-area: main;
-    justify-content: center;
 }
 
 article h3 {
@@ -107,12 +109,15 @@ main img {
 section h1 {
     text-align: center;
 }
-
+section img {
+    height: 500px;
+    width: 700px;
+}
 
 footer {
-    margin-top: 30px;
-    padding: 5%;
+    margin: 0px;
+    padding: 5rem;
     background-color: chocolate;
-    height: 4rem;
+    height: 5rem;
     grid-area: footer;
 }
