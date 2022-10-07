@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RequestAnimationFrame</title>
+    <style>
+        body {
+            background: #f3f3f3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        canvas {
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="animarea"></canvas>
+
+    <script>
+        //gjøre klart canvas:
+        const canvas = document.getElementById("animarea")
+        canvas.width = 1200
+        canvas.height = 600
+        //hent kontekst
+        const ctx = canvas.getContext("2d")
+
+        //Funksjon som tegner firkanten
+        function drawRect() {
+            ctx.beginPath()
+            ctx.fillRect(x, y, 50, 50)
+            ctx.closePath()
+        }
+
+        //startpunkt for x og y i tegning av firkant
+        let x = 0
+        let y = 0
+
+        let direction = false;
+        let boost = 1
+
+        //Registrere knappetrykk
+        document.addEventListener("keydown", event => {
+            if(event.key === "ArrowRight") {
+                direction = "right"
+            }
+            if(event.key === "ArrowLeft") {
+                direction = "left"
+            }
+            if(event.key === "ArrowUp") {
+                direction = "up"
+            }
+            if(event.key === "ArrowDown") {
+                direction = "down"
+            }
+            if(event.key === "s") {
+                boost = 5
+            }
+            console.log(direction)
+        })
+        //Registrere at vi slipper opp knappetrykk:
+        document.addEventListener("keyup", event => {
+            if(event.key === "ArrowRight" || event.key === "ArrowLeft" || event.key === "ArrowDown" || event.key === "ArrowUp") {
+                direction = false;
+            }
+            if(event.key === "s") {
+                boost = 1
+            }
+        })
+        
+        //samlefunksjon for å tømme canvas og tegne opp elementer
+        function drawElements() {
+            //tøm hele canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height)
+            //tegn firkant
+            drawRect()
+            //oppdater posisjon til neste tegning
+            //x = x + 1
+            //y = y + 1
+            
+            if(direction === "right") {
+                x = x + boost
+            }
+            if(direction === "left") {
+                x = x - boost
+            }
+            if(direction === "up") {
+                y = y - 1
+            }
+            if(direction === "down") {
+                y = y + 1
+            }
+
+        /*Få den til å ga raskere
+        document.addEventListener("keydown", event => {
+            if(event.key === "s") {
+                x = x + 2
+            }
+        })*/
+
+            //fortsett requestAnimationFrame
+            requestAnimationFrame(drawElements)
+        }
+
+        //kjør requestAnimationFrame første gang ved innlasting
+        requestAnimationFrame(drawElements)
+    </script>
+</body>
+</html>
