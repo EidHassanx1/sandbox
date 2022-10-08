@@ -22,7 +22,8 @@
     </aside>
     <script>
         //Sett opp Canvas:
-        const canvas = document.getElementBYId("gamearea")
+        const canvas = document.getElementById("gamearea")
+        //Nr.5 Glad jeg inspiserte netsiden nå siden det var en stor "Y" og denne hadde jeg definitivt ikke sett før.
         canvas.width = 704; //64px ikoner * 11 ruter
         canvas.height = 512; //64px ikoner * 8 ruter
         const ctx = canvas.getContext("2d");
@@ -61,6 +62,10 @@
          OPPGAVE 2 - KOMMENTAR 1
          Forklar hva de fire linjene i funksjonen drawCharacters() gjør
          - din kommentar her -
+        Ut ifra navnet på function er det det som tegner dem, men etter jeg prøvde å endre på koden for å se hva som forandret på seg
+        finner jeg ut hva de fire linjene er for.
+        De er der for å plassere både romskipet og alien inn i canvas, player blir plassert på samme sted i canvas mens enemy blir
+        plassert på et random sted i canvas.
         ***************************************************************/
 
         //Sjekk om spilleren har trykket ned (og holder) en tast:
@@ -72,10 +77,13 @@
         let up = false
         let down = false
         //Set retningsvariabel til true hvis riktig piltast er trykket:
-        function buttonPressed(event) 
+        function buttonPressed(event) {
+        //Nr.2 Fant ikke en start (klammeparentes) "{"
             if(event.key === "ArrowLeft") { left = true } 
             if(event.key === "ArrowRight") { right = true } 
-            if(event.key === "ArrowUp") { up = true }.
+            if(event.key === "ArrowUp") { up = true }
+            //Nr.3 Det var en "." i slutten av linjen over
+            //Dette kom opp når jeg inspiserte i nettleseren Fant det tidligere, men måtte dobbeltskjekke for å se om jeg hadde rett
             if(event.key === "ArrowDown") { down = true } 
         }
         //Sett retningsvariabel til false hvis piltasten blir sluppet opp:
@@ -90,12 +98,17 @@
          Forklar hvorfor vi trenger å sjekke både når en knapp er trykket ned,
          og når den er sluppet opp igjen. 
          - din kommentar her -
+        Grunnen for at vi trenger å skjekke når en knapp blir sluppet er fordi når en knapp blir trykket på så fortsetter den å gå
+        i den retningen med mindre vi forteller nettsiden at det noe annet som skjer når den ikke lenger er trykket på.
+        Og når en knapp blir sluppet opp skal det fortsatt ikke gå i den retningen helt til den blir trykket på igjen.
         ***************************************************************/
         
         //Funksjon som modifiserer spillerens posisjon på spillbrettet:
         function playerMovement(speedModifier) {
             //Flytt player i riktig retning
-            left ?? player.x -= player.speed * (speedModifier) : null
+            left ? player.x -= player.speed * (speedModifier) : null
+            //Nr.4 Det var en ekstra "?"
+            //Og igjen dette kom opp når jeg inspiserte i nettleseren. Fant det tidligere, men måtte dobbeltskjekke for å se om jeg hadde rett
             right ? player.x += player.speed * speedModifier : null
             up ? player.y -= player.speed * speedModifier : null
             down ? player.y += player.speed * speedModifier : null
@@ -127,6 +140,9 @@
          OPPGAVE 2 - KOMMENTAR 3
          Forklar hva linjene i funksjonen countDownFunction() gjør
          - din kommentar her -
+        Hvis countdown er enten 0 eller mindre så er det gameover. Det vil si at variabelen game over
+        med teksten "gmae over" blir kjørt det vil også si at både playerloaded og enemyloaded ikke lenger
+        vil dukke opp igjen.
         ***************************************************************/
 
         //Kjør funksjonen for nedtelling hver sekund (1000. milisekund)
@@ -143,7 +159,8 @@
         }
 
         //Funksjon som kjører spillet
-        functio renderGame() {
+        function renderGame() {
+        //Nr.1 Leser gjennom og finner at det er stavefeil i function
             playerMovement(1)
             drawGameElements()
             requestAnimationFrame(renderGame)
