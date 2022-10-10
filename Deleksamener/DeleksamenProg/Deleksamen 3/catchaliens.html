@@ -24,7 +24,7 @@
         //Sett opp Canvas:
         const canvas = document.getElementById("gamearea")
         //Nr.5 Glad jeg inspiserte netsiden nå siden det var en stor "Y" og denne hadde jeg definitivt ikke sett før.
-        canvas.width = 704; //64px ikoner * 11 ruter
+        canvas.width = 960; //64px ikoner * 11 ruter
         canvas.height = 512; //64px ikoner * 8 ruter
         const ctx = canvas.getContext("2d");
 
@@ -150,10 +150,16 @@
 
         //Funksjon som tegner/fyller ut alle spill-elementene i canvas:
         function drawGameElements() {
+            ctx.x = canvas.width / 2;
+            ctx.y = canvas.height / 2;
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             playerLoaded ? ctx.drawImage(playerImage, player.x, player.y) : null
             enemyLoaded ? ctx.drawImage(enemyImage, enemy.x, enemy.y) : null
             gameOver ? ctx.fillText("GAME OVER!", 300, 200) : null
+            //Oppgave 3.1
+            ctx.font = "60px Space Mono"
+            ctx.fillStyle = "red"
+            ctx.textAlign = "center"
             document.getElementById("time").innerHTML = countdown
             document.getElementById("points").innerHTML = aliensCaught
         }
