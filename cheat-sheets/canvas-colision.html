@@ -29,18 +29,39 @@
         const ctx = canvas.getContext("2d")
 
         //Funksjon som tegner firkanten
+        const hero = {
+            fillcolor: "green",
+            width: 50,
+            height: 50
+        }
         function drawRect() {
             ctx.beginPath()
-            ctx.fillStyle = "yellow"
-            ctx.fillRect(x, y, 50, 50)
+            ctx.fillStyle = hero.fillcolor
+            ctx.fillRect(x, y, hero.width, hero.height)
             ctx.closePath()
+        }
+        function randomMinMax (min, max) {
+            return Math.floor(Math.random() * (max - min + 1) + min)
         }
 
         //Funksjon som tegner fjell
-        function drawMountain() {
+        const mountains = []
+        
+        for(let antallFjell = 0; antallFjell < 5; antallFjell++) {
+            mountains.push({
+            color: "gray",
+            x: randomMinMax(0, canvas.width),
+            y: randomMinMax(0, canvas.height),
+            width: randomMinMax(100, 400),
+            height: randomMinMax(50, 200)
+        })
+        }
+
+        console.log(mountains)
+        function drawMountains(x, y, w, h) {
             ctx.beginPath()
-            ctx.fillStyle = "grey"
-            ctx.fillRect(canvas.width / 2 - 100, canvas.height / 2 - 40, 200, 80)
+            ctx.fillStyle = "gray"
+            ctx.fillRect(x, y, w, h)
             ctx.closePath()
         }
 
@@ -72,7 +93,6 @@
             if(event.key === "s") {
                 boost = 5
             }
-            console.log(direction)
         })
         //Registrere at vi slipper opp knappetrykk:
         document.addEventListener("keyup", event => {
@@ -112,8 +132,59 @@
             if(down === true) {
                 y = y + boost
             }
+/*
+            if(
+                x + hero.width > mountains.x && 
+                x < mountains.x + mountains.width && 
+                y + hero.height > mountains.y && 
+                y < mountains.y + mountains.height
+            )   {
+                //Hvis vi har funksjonalitet som avbryter nettleserens rendring av kode,
+                //ala alert(), vil vi måtte resette verdier (siden koden fortsetter å kjøre i bakgrunnen)
+                /*
+                alert("Du kræsja!");
+                x = 0
+                y = 0
+                right = false
+                left = false
+                up = false
+                down = false
+                
+                console.log("Du kræsjer")
+            }    */   
+
+            let collision = false
+
             //Kjører tegning av fjell
-            drawMountain()
+            //drawMountains()
+            mountains.map(mountain => {
+            if (
+                x + hero.width > mountain.x && 
+                x < mountain.x + mountain.width && 
+                y + hero.height > mountain.y && 
+                y < mountain.y + mountain.height
+            ) {
+                collision = true
+            }
+                drawMountains(mountain.x, mountain.y, mountain.width, mountain.height)
+            })
+
+            if (x + hero.width > canvas.width) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height)
+                ctx.font = "40px Arial"
+                ctx.fillStyle = "green"
+                ctx.fillText("!WINNER WINNER CHICKEN DINNER!", 400, 150)
+                ctx.textAlign = "center"
+
+            }
+
+            if(collision) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height)
+                ctx.font = "70px Arial"
+                ctx.fillStyle = "red"
+                ctx.textAlign = "center"
+                ctx.fillText("Game Over!", 400, 150)
+            }
 
             //fortsett requestAnimationFrame
             requestAnimationFrame(drawElements)

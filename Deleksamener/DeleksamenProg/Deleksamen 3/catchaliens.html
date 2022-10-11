@@ -14,6 +14,7 @@
     <section>
         <canvas id="gamearea"></canvas>
     </section>
+    <button type="button" id="start" onclick="playGame()">PLAY</button>
     <p><a href="https://www.flaticon.com/free-icons/alien" title="alien icons">Alien icon created by Smashicons</a>, 
     <a href="https://www.flaticon.com/free-icons/spaceship" title="spaceship icons">Spaceship icons created by Freepik</a> - Flaticon</p>
     <aside id="history">
@@ -24,15 +25,20 @@
         //Sett opp Canvas:
         const canvas = document.getElementById("gamearea")
         //Nr.5 Glad jeg inspiserte netsiden nå siden det var en stor "Y" og denne hadde jeg definitivt ikke sett før.
+        //Oppgave 3.3
         canvas.width = 960; //64px ikoner * 11 ruter
         canvas.height = 512; //64px ikoner * 8 ruter
         const ctx = canvas.getContext("2d");
 
         //Gjør klar spillinformasjon
-        let countdown = 10
+        //Oppgave 3.2
+        //Endrer på hvor spillet starter å telle ned fra 10 til 60
+        let countdown = 5
         let iconsize = 64
         let gameOver = false
-        const player = { speed: 2 }
+        //Oppgave 3.4
+        //Valgte å ta hastighet 6 siden 250 var for høy fart for spillet.
+        const player = { speed: 6 }
         const enemy = { }
         let aliensCaught = 10;
         let history = []
@@ -146,7 +152,7 @@
         ***************************************************************/
 
         //Kjør funksjonen for nedtelling hver sekund (1000. milisekund)
-        setInterval(countdownFunction, 1000)
+       
 
         //Funksjon som tegner/fyller ut alle spill-elementene i canvas:
         function drawGameElements() {
@@ -156,6 +162,8 @@
             playerLoaded ? ctx.drawImage(playerImage, player.x, player.y) : null
             enemyLoaded ? ctx.drawImage(enemyImage, enemy.x, enemy.y) : null
             gameOver ? ctx.fillText("GAME OVER!", 300, 200) : null
+            //Oppgave 4.5 hvis det er gameover vil jeg at knappen skal komme tilbake igjen.
+            gameOver ? document.getElementById("start").style.display = "block" : null
             //Oppgave 3.1
             ctx.font = "60px Space Mono"
             ctx.fillStyle = "red"
@@ -177,18 +185,24 @@
         
         //Funksjon for start/restart spill
         function playGame() {
+            //Oppgave 4.4 når jeg trykker på play vil jeg at knappen skal bli usynlig og det må jeg ha her under i playgame funksjonen.
+            document.getElementById("start").style.display = "none";
             //Startverdier
-            let countdown = 10
-            let gameOver = false
-            playerLoaded = false
-            enemyLoaded = false
+            //Oppgave 3.2
+            //Endrer på hvor spillet starter å telle ned fra 10 til 60
+            countdown = 5
+            gameOver = false
+            playerLoaded = true
+            enemyLoaded = true
             //Tegne spill-elementer ved oppstart
+            //Måtte flytte "setInterval(countdownFunction, 1000)" så den ikke starter med en gang nettsiden starter 
+            setInterval(countdownFunction, 1000)
             drawCharacters()
             renderGame()
         }
         
         //Kjør hele spillet med playGame-funksjonen
-        playGame()
+        //playGame()
     </script>
 
 </body>
