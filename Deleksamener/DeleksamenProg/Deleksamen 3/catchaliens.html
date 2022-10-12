@@ -33,14 +33,15 @@
         //Gjør klar spillinformasjon
         //Oppgave 3.2
         //Endrer på hvor spillet starter å telle ned fra 10 til 60
-        let countdown = 5
+        let countdown = 60
         let iconsize = 64
         let gameOver = false
         //Oppgave 3.4
         //Valgte å ta hastighet 6 siden 250 var for høy fart for spillet.
         const player = { speed: 6 }
         const enemy = { }
-        let aliensCaught = 10;
+        //Endret aliensCaught til 0 siden vi ikke har fanget noen før spillet har startet
+        let aliensCaught = 0;
         let history = []
         history.length < 1 ? document.getElementById("history").style.display = "none" : document.getElementById("history").style.display = "block"
 
@@ -170,6 +171,10 @@
             ctx.textAlign = "center"
             document.getElementById("time").innerHTML = countdown
             document.getElementById("points").innerHTML = aliensCaught
+
+            /*if (player.x > canvas.width) {
+                left = false
+            }*/
         }
 
         //Funksjon som kjører spillet
@@ -190,7 +195,7 @@
             //Startverdier
             //Oppgave 3.2
             //Endrer på hvor spillet starter å telle ned fra 10 til 60
-            countdown = 5
+            countdown = 60
             gameOver = false
             playerLoaded = true
             enemyLoaded = true
