@@ -106,7 +106,11 @@ article h3 {
 article p {
     text-align: center;
 }
-
+/*
+article .numbertwo .button1 {
+    text-align: right;
+}
+*/
 main img {
     height: 200px;
     width: 300px;

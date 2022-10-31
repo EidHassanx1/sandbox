@@ -12,8 +12,8 @@ body {
 #grid-container {
     margin: 0px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 50px 1fr 50px;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto auto;
     grid-template-areas: "logo header nav"
                         "main main main"
                         "footer footer footer";
@@ -25,27 +25,25 @@ body {
     overflow: auto;
     display: flex;
     justify-content: center;
-    align-items: left;
+    align-items: center;
     background-color: chocolate;
-    height: 10rem;
 }
 
 nav {
-    height: 5rem;
     margin: 0px;
 }
 
 nav li {
+    list-style: none;
     margin: 0 10px;
     grid-area: nav;
     justify-content: center;
-    margin: 5%;
-    
 }
 
 .button1 {
     border: 2px solid green;
     background-color: yellow;
+    text-align: center;
 }
 
 .navigasjon {
@@ -128,9 +126,6 @@ footer {
     grid-area: footer;
 }
 
-
-
-
 #CMSGrid {
     display: grid;
     margin: auto;
@@ -144,14 +139,24 @@ footer {
     grid-column-end: 3;
     grid-row-start: 1;
     grid-row-end: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
 
 #title {
     grid-column-start: 3;
     grid-column-end: 6;
     grid-row-start: 1;
     grid-row-end: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+#title h2 {
+    text-align: center;
 }
 
 #meny {
@@ -159,10 +164,18 @@ footer {
     grid-column-end: 9;
     grid-row-start: 1;
     grid-row-end: 2;
-
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
+#meny nav ul li a {
+    align-items: center;
+}
+
+nav ul {
+    display: flex;
+    flex-direction: space-evenly;
 }
 
 #footer {
@@ -171,3 +184,4 @@ footer {
     grid-row-start: 5;
     grid-row-start: 6;
 }
+
