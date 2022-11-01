@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RequestAnimationFrame</title>
+    <style>
+        body {
+            background: #f3f3f3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        canvas {
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="animarea"></canvas>
+
+    <script>
+        //gjøre klart canvas:
+        const canvas = document.getElementById("animarea")
+        canvas.width = 1200
+        canvas.height = 600
+        //hent kontekst
+        const ctx = canvas.getContext("2d")
+
+        //Funksjon som tegner firkanten
+        const hero = {
+            fillcolor: "green",
+            width: 50,
+            height: 50
+        }
+        function drawRect() {
+            ctx.beginPath()
+            ctx.fillStyle = hero.fillcolor
+            ctx.fillRect(x, y, hero.width, hero.height)
+            ctx.closePath()
+        }
+        function randomMinMax (min, max) {
+            return Math.floor(Math.random() * (max - min + 1) + min)
+        }
+
+        //Funksjon som tegner fjell
+        const mountains = []
+        
+        for(let antallFjell = 0; antallFjell < 5; antallFjell++) {
+            mountains.push({
+            color: "gray",
+            x: randomMinMax(0, canvas.width),
+            y: randomMinMax(0, canvas.height),
+            width: randomMinMax(100, 400),
+            height: randomMinMax(50, 200)
+        })
+        }
+
+        console.log(mountains)
+        function drawMountains(x, y, w, h) {
+            ctx.beginPath()
+            ctx.fillStyle = "gray"
+            ctx.fillRect(x, y, w, h)
+            ctx.closePath()
+        }
+
+        //startpunkt for x og y i tegning av firkant
+        let x = 0
+        let y = 0
+
+        let right = false;
+        let left = false;
+        let up = false;
+        let down = false;
+
+        let boost = 1
+
+        //Registrere knappetrykk
+        document.addEventListener("keydown", event => {
+            if(event.key === "ArrowRight") {
+                right = true
+            }
+            if(event.key === "ArrowLeft") {
+                left = true
+            }
+            if(event.key === "ArrowUp") {
+                up = true
+            }
+            if(event.key === "ArrowDown") {
+                down = true
+            }
+            if(event.key === "s") {
+                boost = 5
+            }
+        })
+        //Registrere at vi slipper opp knappetrykk:
+        document.addEventListener("keyup", event => {
+            /*
+            if(event.key === "ArrowRight" || event.key === "ArrowLeft" || event.key === "ArrowDown" || event.key === "ArrowUp") {
+                direction = false;
+            }*/
+            event.key === "ArrowRight" ? right = false : null
+            event.key === "ArrowLeft" ? left = false : null
+            event.key === "ArrowUp" ? up = false : null
+            event.key === "ArrowDown" ? down = false : null
+
+            if(event.key === "s") {
+                boost = 1
+            }
+        })
+        
+        //samlefunksjon for å tømme canvas og tegne opp elementer
+        function drawElements() {
+            //tøm hele canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height)
+            //tegn firkant
+            drawRect()
+            //oppdater posisjon til neste tegning
+            //x = x + 1
+            //y = y + 1
+            
+            if(right === true) {
+                x = x + boost
+            }
+            if(left === true) {
+                x = x - boost
+            }
+            if(up === true) {
+                y = y - boost
+            }
+            if(down === true) {
+                y = y + boost
+            }
+/*
+            if(
+                x + hero.width > mountains.x && 
+                x < mountains.x + mountains.width && 
+                y + hero.height > mountains.y && 
+                y < mountains.y + mountains.height
+            )   {
+                //Hvis vi har funksjonalitet som avbryter nettleserens rendring av kode,
+                //ala alert(), vil vi måtte resette verdier (siden koden fortsetter å kjøre i bakgrunnen)
+                /*
+                alert("Du kræsja!");
+                x = 0
+                y = 0
+                right = false
+                left = false
+                up = false
+                down = false
+                
+                console.log("Du kræsjer")
+            }    */   
+
+            let collision = false
+
+            //Kjører tegning av fjell
+            //drawMountains()
+            mountains.map(mountain => {
+            if (
+                x + hero.width > mountain.x && 
+                x < mountain.x + mountain.width && 
+                y + hero.height > mountain.y && 
+                y < mountain.y + mountain.height
+            ) {
+                collision = true
+            }
+                drawMountains(mountain.x, mountain.y, mountain.width, mountain.height)
+            })
+
+            if (x + hero.width > canvas.width) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height)
+                ctx.font = "40px Arial"
+                ctx.fillStyle = "green"
+                ctx.fillText("!WINNER WINNER CHICKEN DINNER!", 400, 150)
+                ctx.textAlign = "center"
+            }
+
+            /*if (y + hero.height < canvas.height) {
+                down = false
+            }*/
+
+            if(collision) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height)
+                ctx.font = "70px Arial"
+                ctx.fillStyle = "red"
+                ctx.textAlign = "center"
+                ctx.fillText("Game Over!", 400, 150)
+            }
+
+            //fortsett requestAnimationFrame
+            requestAnimationFrame(drawElements)
+        }
+
+        //kjør requestAnimationFrame første gang ved innlasting
+        requestAnimationFrame(drawElements)
+    </script>
+</body>
+</html>
