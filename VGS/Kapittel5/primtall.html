@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <script type="text/javascript">
+
+    window.onload = oppstart;
+
+    function oppstart() {
+      document.getElementById("btnGenerer").onclick = generer;
+    }
+    function generer() {
+      var fraVerdi = document.getElementById("txtFra").value;
+      var tilVerdi = document.getElementById("txtTil").value;
+
+      var tekst = "";
+
+      for (var hovedtall = fraVerdi; hovedtall <= tilVerdi; hovedtall++) {
+        var erPrimtall = true;
+        for (var deletall = 2; deletall < hovedtall; deletall++) {
+          if (hovedtall % deletall === 0) {
+            erPrimtall = false;
+            break;
+          }
+        }
+        if (erPrimtall === true && hovedtall > 1) {
+          tekst += "Tallet " + hovedtall + " er et primtall!<br />";
+        }
+      }
+
+      document.getElementById("utskrift").innerHTML = tekst;
+    }
+  </script>
+  <body>
+    <p>
+      Fra: <input type="text" id="txtFra" />
+      Til: <input type="text" id="txtTil" />
+      <button id="btnGenerer" type="button">Generer</button>
+    </p>
+    <p id="utskrift"></p>
+  </body>
+</html>

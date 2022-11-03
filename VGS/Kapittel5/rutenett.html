@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <script type="text/javascript">
+
+    window.onload = oppstart;
+    function oppstart() {
+      var antallKolonner = 10;
+      var antallRadar = 10;
+      var bredde = document.getElementById("tegneflate").width;
+      var hoeyde = document.getElementById("tegneflate").height;
+      var kolonneBredde = bredde / antallKolonner;
+      var radHoeyde = hoeyde / antallRadar;
+
+      var ctx = document.getElementById("tegneflate").getContext("2d");
+
+      ctx.lineWidth = 2;
+      ctx.strokeStyle = "blue";
+
+      for (var tellerK = 0; tellerK <= antallKolonner; tellerK++) {
+        ctx.beginPath();
+        ctx.moveTo(tellerK * kolonneBredde, 0);
+        ctx.lineTo(tellerK * kolonneBredde, hoeyde);
+        ctx.stroke();
+      }
+      for (var tellerR = 0; tellerR <= antallKolonner; tellerR++) {
+        ctx.beginPath();
+        ctx.moveTo(0, tellerR * radHoeyde);
+        ctx.lineTo(bredde, tellerR * radHoeyde);
+        ctx.stroke();
+      }
+    }
+  </script>
+  <body>
+    <canvas id="tegneflate" width="500" height="500"></canvas>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <script type="text/javascript">
+
+  window.onload = oppstart;
+
+  function oppstart() {
+    var utskrift = document.getElementById("utskrift");
+
+
+    var publikumliste = [2151, 1759, 1414, 1502, 1622, 1531] ;
+    var budsjett = [1700, 1600, 1500, 1400, 1400, 1500] ;
+
+    for (var i=0; i < publikumliste.lenght; i++) {
+      utskrift.innerHTML += publikumliste[i] + "<br />";
+    }
+
+
+  }
+  </script>
+  <body>
+    <p id="utskrift"></p>
+    <p> HALLA! </p>
+  </body>
+</html>

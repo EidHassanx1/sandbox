@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <script type="text/javascript">
+
+    window.onload = oppstart;
+
+    var farger = ["green", "red", "yellow","blue"];
+    var brikkeTeller = 1;
+    var intervallID;
+    var antall = 0;
+    var slutt = false;
+    var maksAntall = 8;
+
+    function oppstart() {
+      for (var i = 0; i < farger.length; i++) {
+        var boks = document.createElement("span");
+        boks.className = "boks";
+        boks.style.backgroundColor = farger[i];
+        boks.ondrop = slipp;
+        boks.ondragover = tillat;document.getElementById("bokser").appendChild(boks);
+      }
+      intervallID = setInterval(lagElement, 800);
+    }
+    function lagElement() {
+      var brikke = document.createElement("span");
+      brikke.className = "brikke";
+
+      brikke.style.backgroundColor = farger[Math.floor(Math.random() * farger.length)];
+      brikke.draggable = true;
+      brikke.ondragstart = dra;
+      brikke.id = "brikke" + brikkeTeller;
+      brikkeTeller++;
+      document.getElementById("brikker").appendChild(brikke);
+
+      if (document.getElementById("brikker").children.length > maksAntall) {
+        alert("Du klarte bare " + antall + " din taper");
+        clearInterval(intervallID);
+        slutt = true;
+      }
+    }
+      function dra(evt) {
+        evt.dataTransfer.setData("text", evt.target.id);
+      }
+      function slipp(evt) {
+        if (slutt === true) {
+            return;
+        }
+        evt.preventDefault ();
+        var elementId = evt.dataTransfer.getData("text");
+
+        if (evt.target.style.backgroundColor === document.getElementById(elementId).style.backgroundColor) {
+          document.getElementById(elementId).ondragstart = null;
+
+          document.getElementById("brikker").removeChild (document.getElementById(elementId));
+          antall++;
+          document.getElementById("antall").innerHTML = antall;
+        }
+      }
+      function tillat(evt) {
+        evt.preventDefault();
+      }
+  </script>
+  <style>
+  .boks {
+    width: 250px;
+    height: 250px;
+    display: inline-block;
+    }
+    .brikke {
+      width: 100px;
+      height: 100px;
+      display: inline-block;
+    }
+    body {
+      background-color: black;
+    }
+    p {
+      color: white;
+    }
+  </style>
+  <body>
+    <div id="bokser">
+    </div>
+    <div id="brikker">
+    </div>
+    <p id="antall">Du har 0</p>
+  </body>
+</html>

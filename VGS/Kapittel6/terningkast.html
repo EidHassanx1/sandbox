@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <script type="text/javascript">
+    window.onload = oppstart;
+
+    function oppstart() {
+      var opptelling = [0,0,0,0,0,0];
+
+      for (var i = 0; i < 1000; i++) {
+        var oeyne = Math.floor(Math.random() * 6) + 1;
+        opptelling[oeyne - 1]++;
+      }
+
+      for (var j = 0; j < opptelling.lenght; j++) {
+        var nyttElement = document.createElement("p");
+        nyttElement.innerHTML = "Antall " + (j + 1) + "'ere: " + opptelling[j];
+
+        var nyGraf = document.createElement("span");
+        nyGraf.className = "graf";
+        nyGraf.style.width = opptelling[j] + "px";
+        nyttElement.appendChild(nyGraf);
+
+        document.getElementById("utskrift").appendChild(nyttElement);
+      }
+    }
+  </script>
+  <style>
+    span.graf {
+      background-color: red;
+      height: 20px;
+      display: inline-block;
+      margin-left: 10px;
+    }
+  </style>
+  <body>
+    <div id="utskrift"></div>
+  </body>
+</html>

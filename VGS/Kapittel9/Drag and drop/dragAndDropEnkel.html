@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<style>
+#div1 {
+  width: 900px;
+  height: 450px;
+  background-image: url("jail.png");
+  border: 1px solid #aaaaaa;
+
+
+}
+#donald {
+  position: absolute;
+  z-index: -1;
+}
+
+</style>
+<script>
+
+// funksjonen kalles fra div1. Fjerner standardverdien for drop på div, slik at vi kan droppe element i div
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev) {		// "text" angir format, ev.target.id legger til data. Bruker event target sin id "drag1"
+console.log("Drag"); 
+  ev.dataTransfer.setData("text", ev.target.id);
+  console.log(ev.target.id);
+  
+}
+
+function drop(ev) {
+  ev.preventDefault();
+  // henter dataene, som er id fra drop target
+  var data = ev.dataTransfer.getData("text");
+  console.log("Drop");
+  console.log(data);
+	//Lager nytt element basert på innholdet i variablen data.
+	//Data har fått verdi fra "tekst" lagt til i funksjoen drag.  
+  ev.target.appendChild(document.getElementById(data));
+  
+  
+	var x = document.getElementById("myAudio"); 
+	x.play(); 
+ 
+}
+</script>
+</head>
+<body>
+
+<h2>Sett Trump inn i fengselet:<h2>
+
+<div id="div1"  src="jail.png" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<br>
+<img id="donald" src="donald_trump.png" draggable="true" ondragstart="drag(event)" width="900" height="450">
+
+<audio id="myAudio">
+<source src="Metal_Door.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+</body>
+</html>

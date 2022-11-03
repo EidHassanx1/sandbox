@@ -7,15 +7,19 @@
     <title>NewGame</title>
     <style>
         body {
-            background: lime;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            background-image: url(background.jpg);
+            height: 100%;
+            width: 100%;
+
+            display: grid;
+            
         }
         canvas {
             /*background: rgb(253, 253, 253);*/
             background-image: url(Frame.png);
             background-size: cover;
+            display: flex;
+            justify-content: center;
             
         }
     </style>
@@ -31,30 +35,43 @@
         //hent kontekst
         const ctx = canvas.getContext("2d")
 
-        const ball = {
-            fillColor: "blue",
+        let ball = {
+            //fillColor: "blue",
             strokeStyle: "black",
             radius: 30
         }
         const playerR = {
-
+            fillStyle: "cyan",
+            strokeStyle: "black",
+            width: 30,
+            height: 50
         }
 
         const playerL = {
-
+            fillStyle: "pink",
+            strokeStyle: "black",
+            width: 30,
+            height: 50
         }
 
      
         //Funksjon som tegner Sirkel
         function drawRect() {
             //Firkant fillRect og sirkel arc*******
-            //ctx.fillRect(x, y, 30, 50)
-            
             ctx.beginPath()
+
+            ctx.fillRect(Rx, Ry, playerR.width, playerR.height)
+            ctx.fillRect(Lx, Ly, playerL.width, playerL.height)
+            ctx.strokeStyle = playerR.strokeStyle
+            ctx.strokeStyle = playerL.strokeStyle
+            ctx.fillStyle = playerR.fillStyle
+            ctx.fillStyle = playerL.fillStyle
             
-            ctx.arc(x, y, ball.radius, 0, 2* Math.PI)
+
+            ctx.arc(Bx, By, ball.radius, 0, 2* Math.PI)
             ctx.strokeStyle = ball.strokeStyle
-            ctx.lineWidth = 5
+
+            ctx.lineWidth = 2
             ctx.fillStyle = ball.fillColor
             ctx.stroke()
             ctx.fill()
@@ -64,11 +81,23 @@
         } 
         
         //startpunkt for x og y i tegning av firkant
-        let x = 600
-        let y = 350
+        let Bx = 400
+        let By = 350
 
-        let dx = 10
-        let dy = 10
+        let Rx = 1000
+        let Ry = 300
+
+        let Lx = 200
+        let Ly = 300
+
+
+
+
+        let dx = 1
+        let dy = 1
+
+        
+        
         
         //samlefunksjon for å tømme canvas og tegne opp elementer
         function drawElements() {
@@ -79,21 +108,36 @@
             //oppdater posisjon til neste tegning
             
             // let startFart = true
-            x += dx
-            y += dy
+            Bx += dx
+            By += dy
 
             //startFart? x++ && y++ : null
             
             
-        if (y + dy > canvas.height - ball.radius || y + dy < ball.radius) {
+        if (By + dy > canvas.height - ball.radius || By + dy < ball.radius) {
            dy = -dy
         } 
-        if (x + dx > canvas.width - ball.radius || x + dx < ball.radius) {
+        if (Bx + dx > canvas.width - ball.radius || Bx + dx < ball.radius) {
             dx = -dx
+        }
+
+        if (Bx > 600) {
+            ctx.fillStyle = "blue";
+        }
+        if (Bx < 600) {
+            ctx.fillStyle = "red";
         }
 
             //fortsett requestAnimationFrame
             requestAnimationFrame(drawElements)
+
+        /*
+            if (ball > canvasLeft) {
+            fillColor = "blue"
+        } else (ball < 600) {
+            fillColor = "red"
+        }*/
+        
         }
 
         

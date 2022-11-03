@@ -1,0 +1,14 @@
+body {
+  background-color: yellow;
+}
+p {
+  color: blue;
+  text-shadow: 20px;
+  font-size: 30px;
+}
+span {
+  color: black;
+  text-shadow: 20px;
+  font-size: 30px;
+  text-decoration: underline;
+}

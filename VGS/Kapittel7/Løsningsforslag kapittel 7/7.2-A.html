@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Tommer til Cm</title>
+</head>
+
+<body>
+	
+	<p>Skriv inn antall tommer<p/> <input type="text" id="txtTall" />
+	<button id="btnSjekk">Sjekk</button><br />
+     <p id="utskrift">Her kommer svaret<p/>
+		
+	<script>
+	
+		window.onload = oppstart;
+			
+		function oppstart()
+		{	
+		document.getElementById("btnSjekk").onclick = settVerdi;
+		}
+	
+		function settVerdi()
+		{
+		var tall = document.getElementById("txtTall").value;
+		document.getElementById("utskrift").innerHTML = fraTommerTilCm(tall);
+		}
+		
+		function fraTommerTilCm(tommer) 
+		{
+		return tommer * 2.54;
+		}
+
+	
+	</script>
+</body>
+</html>
