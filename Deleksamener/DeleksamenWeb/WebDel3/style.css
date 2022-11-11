@@ -52,7 +52,7 @@ body {
 
 #avatar img {
     max-width: 10rem;
-    max-height: 10rem;
+    max-height: 5rem;
 }
 
 #meny {
@@ -77,12 +77,11 @@ nav{
     font-size: 20px;
 }
 
-.button1 {
+main .button1 {
     border: 2px solid green;
     background-color: yellow;
     text-align: center;
 }
-
 /*
 #grid-container {
     display: grid;
@@ -91,23 +90,20 @@ nav{
     grid-template-areas: "logo header";
 }
 */
-
 main {
     grid-area: main;
     display: flex;
     justify-content: space-evenly;
-    align-items: center;
+    /*align-items: center;*/
     padding-bottom: 10rem;
     padding-top: 10rem;
 }
-
 /*
 #avatar, #title, #meny {
     background-image: url(img/header.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }*/
-
 footer {
     grid-area: footer;
     display: flex;
@@ -121,11 +117,13 @@ article{
     align-items: center;
     border-style: solid;
     width: 300px;
+    margin: 20px;
 }
 
 article h3 {
     text-align: center;
 }
+
 article p {
     text-align: center;
 }
@@ -135,10 +133,24 @@ main img {
     width: 300px;
 }
 
+
 section h1 {
     text-align: center;
 }
+
 section img {
     height: 500px;
     width: 700px;
+}
+
+
+
+main article .cms1 {
+    grid-area: main;
+    display: flex;
+    align-items: left;
+}
+#cms2 {
+    display: flex;
+    justify-content: right;
 }
