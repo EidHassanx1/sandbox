@@ -6,15 +6,15 @@
   }
 
 body {
-    background-color: cyan;
-    margin: 0;
-}
-
-#CMSGrid {
+    margin: 0;    
     background-image: url(img/background.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
+}
+
+#CMSGrid {
+    
 
 
     display: grid;
@@ -85,9 +85,13 @@ nav{
 }
 
 #kontakt .button1 {
-    border: px solid green;
+    border: 3px solid green;
     background-color: yellow;
     text-align: center;
+}
+
+#kontakt a{
+    font-size: 25px;
 }
 /*
 #grid-container {
