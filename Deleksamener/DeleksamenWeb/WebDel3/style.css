@@ -109,17 +109,12 @@ nav{
     padding-bottom: 10rem;
     padding-top: 10rem;
 }
-/*
-#avatar, #title, #meny {
-    background-image: url(img/header.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-}*/
+
 #footer {
     grid-area: footer;
     display: flex;
     justify-content: space-evenly;
-    
+    background-color: lightblue;
 }
 
 article{
