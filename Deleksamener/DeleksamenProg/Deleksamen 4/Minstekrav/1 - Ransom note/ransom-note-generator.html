@@ -13,7 +13,7 @@
             <label for="text">Enter text to ransomize:</label>
             <textarea id="text" name="name" rows="8"></textarea>
         </p>
-        <button>Ransomize text</button>
+        <button onclick="makeRansom()">Ransomize text</button>
     </section>
     <section id="ransom-note">
 
@@ -26,7 +26,7 @@
         //Create function to run on button click
         function makeRansom() {
             //TODO: Fetch text from textarea
-            
+            const textarea = document.getElementById("text").innerHTML
 
             //TODO: Ensure correct capitalization of text string fetched
             
