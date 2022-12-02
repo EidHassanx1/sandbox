@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!--Nr.3 Her manglet det en string-avslutning-->
+    <title>Web eksamen del 1</title>
+</head>
+<!--Fant 22 feil når jeg lastet opp filen i validator.
+Nr.1 Det første jeg gjorde var å sette spårk i koden og valgte "en" for engelsk
+Nr.2 Det andre var å få hele dokumentet til å bli en html-fil ved å skrive !doctype html
+Fortsatte der jeg stoppet sist og måtte starte validator på nytt, men denne gangen fikk jeg bare opp 9feil.
+-->
+    <body>  
+        <nav>
+            <h1>Logo</h1>
+            <ul>
+                <li> <a href="#">Boatswain schooner</a></li>
+                <li> <a href="#">Account lookout</a></li>
+                <li> <a href="#">Sail ho shrouds</a></li>
+            </ul>
+        </nav>
+     <!--Nr.4, her stod det at li ikke kunne være under nav, men at den kunne være under ol, ul eller menu.
+        Gikk mye fram og tilbake her. Prøvde alle tre mulighetene for at h1 kunne være under ol, ul eller menu, men det gikk ikke
+        så gikk jeg videre til å se hva jeg har gjort i de andre filene mine og fant ut at h1 ikke mått være med li
+    -->
+        <header>
+            <h2>Yar Pirate Ipsum</h2>
+            <!--Nr.7 Endret fra h1 til h2-->
+            <p>Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crow's nest nipperkin grog yardarm hempen halter furl.</p>
+            <a class="button">Les mer</a>
+        </header>
+        <div>
+            <main>
+                <article>
+                    <h3>Prow scuttle</h3>
+                    <!--Nr.6 Endret fra h1 til h3-->
+                    <p>Deadlights jack lad schooner scallywag dance the hempen jig carouser broadside cable strike colors.</p>
+                    <a href="#">Les mer</a>
+                </article>
+                <!--Nr.5 Her manglet det en article-slutt-->
+                <article>
+                    <h3>Jack Tar transom</h3>
+                    <!--Nr.8 Endret fra h1 til h3-->
+                    <p>Deadlights jack lad schooner scallywag dance the hempen jig carouser broadside cable strike colors.</p>
+                    <a href="#">Les mer</a>
+                </article>
+                <article>
+                    <h3>Trysail Sail</h3>
+                    <!--Nr.9 Endret fra h1 til h3-->
+                    <p>Deadlights jack lad schooner scallywag dance the hempen jig carouser broadside cable strike colors.</p>
+                    <a href="#">Les mer</a>
+                </article>
+            </main>
+            <!--Nr.10 tok meg en stund å finne den men så på cssfilen og fant ikke noe som "designet" div
+            prøvde å få main til å bli alene og fant ut at det var feilen-->
+        </div>
+        <footer>
+            <span>Twitter</span>
+            <span>Facebook</span>
+            <span>Instagram</span>
+        </footer>
+    </body>
+</html>

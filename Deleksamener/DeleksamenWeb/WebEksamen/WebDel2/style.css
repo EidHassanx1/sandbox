@@ -1,0 +1,133 @@
+@media screen and (max-width: 800px) {
+    .left, .main, .right {
+      width: 100%;
+    }
+  }
+
+body {
+    background-color: cyan;
+    margin: 0;
+}
+
+#grid-container {
+    margin: 0px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 50px 1fr 50px;
+    grid-template-areas: "logo header nav"
+                        "main main main"
+                        "footer footer footer";
+}
+
+#logo {
+    grid-area: logo;
+    margin: 0px;
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+    align-items: left;
+    background-color: chocolate;
+    height: 10rem;
+}
+
+nav {
+    height: 5rem;
+    margin: 0px;
+}
+
+nav li {
+    margin: 0 10px;
+    grid-area: nav;
+    justify-content: center;
+    margin: 5%;
+    
+}
+
+.button1 {
+    border: 2px solid green;
+    background-color: white;
+}
+
+.navigasjon {
+    margin: 0px;
+    overflow: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: right;
+    height: 10rem;
+    background-color: chocolate;
+}
+
+header {
+    margin: 0px;
+    height: 10rem;
+    grid-area: header;
+    text-align: center;
+    background-color: chocolate;
+}
+
+#headerbilde {
+    grid-area: logo header nav;
+}
+
+/*
+#grid-container {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    grid-template-rows: 50px;
+    grid-template-areas: "logo header";
+}
+*/
+
+main {
+    grid-area: main;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    width: auto;
+    min-height: 750px;
+}
+
+main article {
+    flex-basis: 20%;
+    justify-content: center;
+    height: 350px;
+    padding: 1rem;
+    margin: 5rem;
+    border: 1px solid purple;
+}
+
+article h3 {
+    text-align: center;
+}
+article p {
+    text-align: center;
+}
+/*
+article .numbertwo .button1 {
+    text-align: right;
+}
+*/
+main img {
+    height: 200px;
+    width: 300px;
+}
+
+section h1 {
+    text-align: center;
+}
+section img {
+    height: 500px;
+    width: 700px;
+}
+
+footer {
+    margin: 0px;
+    padding: 5rem;
+    background-color: chocolate;
+    height: 5rem;
+    grid-area: footer;
+}

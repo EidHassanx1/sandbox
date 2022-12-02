@@ -1,0 +1,226 @@
+@media screen and (max-width: 800px) {
+    main {
+      width: 100%;
+    }
+  }
+
+body {
+    margin: 0;
+    background-color: lightgreen;
+    /*background-image: url(img/background.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;*/
+}
+
+
+#CMSGrid {
+    
+
+
+    display: grid;
+    margin: auto;
+    width: 100%;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas: "title title title"
+                         "logo logo logo"
+                         "meny meny meny"
+                         "kontakt kontakt kontakt"
+                         "main main main"
+                         "footer footer footer";
+}
+
+#title {
+    grid-area: title;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(img/header1.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#title h2 {
+    text-align: center;
+}
+
+#avatar {
+    grid-area: logo;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#avatar img {
+    max-width: 10rem;
+    max-height: 5rem;
+}
+
+#meny {
+    grid-area: meny;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#meny nav ul li {
+    display: inline-block;
+    list-style: none;
+    margin: 20px;
+}
+
+#meny nav ul li a{
+    font-size: 20px;
+}
+
+#kontakt {
+    grid-area: kontakt;
+    display: flex;
+    justify-content: center;
+}
+
+#kontakt .button1 {
+    border: 3px solid green;
+    background-color: yellow;
+    text-align: center;
+}
+
+#kontakt a{
+    font-size: 25px;
+}
+#kontakt h2{
+    font-size: 30px;
+}
+/*
+#grid-container {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    grid-template-rows: 50px;
+    grid-template-areas: "logo header";
+}
+*/
+#main {
+    grid-area: main;
+    display: flex;
+    justify-content: space-evenly;
+    /*align-items: center;*/
+    padding-bottom: 10rem;
+    padding-top: 10rem;
+}
+
+#footer {
+    grid-area: footer;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: lightblue;
+}
+
+article{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-style: solid;
+    width: 300px;
+    background-color: aquamarine;
+}
+
+article h3 {
+    text-align: center;
+}
+
+article p {
+    text-align: center;
+}
+
+article img {
+    height: 200px;
+    width: 300px;
+}
+
+
+section h1 {
+    text-align: center;
+}
+
+section img {
+    height: 500px;
+    width: 700px;
+}
+
+#main h3 {
+    text-align: center;
+}
+
+.cms1 {
+    grid-area: main;
+    display: flex;
+    justify-content: center;
+}
+
+
+#cmsTable ul {
+    display: flex;
+    justify-content: center;
+    margin: 0px;
+    padding: 0px;
+}
+
+#cmsTable ul li {
+    border-style: solid;
+    padding: 5px 5px 10px 10px;
+    list-style-type: none;
+    font-size: 14px;
+    width: 150px;
+    background-color: aqua;
+}
+
+#cmsTable ul li.heading {
+    text-transform: uppercase;
+    font-size: 16px;
+}
+
+@media (max-width: 1250px) {
+    #main{
+        display: flex;
+        flex-direction: column;
+    }
+}
+@media (max-width: 550px) {
+    #cmsTable ul{
+        display: flex;
+        flex-direction: column;
+        min-width: 350px;
+    }
+}
+
+
+
+/*
+Alt under er fra Tore Marius sin forelesning om Universell Utforming fant linken i powerpoint
+https://bignerdranch.com/blog/web-accessibility-skip-navigation-links/
+*/
+
+.skip {
+    position: absolute;
+    top: -1000px;
+    left: -1000px;
+    height: 1px;
+    width: 1px;
+    text-align: left;
+    overflow: hidden;
+}
+a.skip:active,
+a.skip:focus,
+a.skip:hover {
+    left: 0;
+    top: 0;
+    width: auto;
+    height: auto;
+    overflow: visible;
+}

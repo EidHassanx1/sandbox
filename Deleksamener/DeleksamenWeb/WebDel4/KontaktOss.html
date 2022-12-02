@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kontakt Oss siden er denne.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>Deleksamen3 Webutvikling</title>
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
 </head>
 <body>
     <div id="CMSGrid">
@@ -30,13 +33,27 @@
             <article>
                 <h1>Kontakt Oss</h1>
                 <p>Åpent fra man-fre kl.09:00-16:00</p>
-                <p>Tlf.12345678</p>
+                <p>email: eid-hassan@outlook.com</p>
+                <p>Tlf. 45573199</p>
+
+                <form>
+                    <label for="name">Navn: </label>
+                    <input type="text" name="name" id="name">
+                    <label for="etternavn">Etter Navn: </label>
+                    <input type="text" name="etternavn" id="etternavn">
+                    <label for="description">Beskrivelse: </label>
+                    <input type="text" name="description" id="description">
+                    <button type="button" onClick="window.location.reload()">Send</button>
+                </form>
             </article>
+            <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11824.705275783246!2d11.358489361161274!3d59.12678820799294!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x464412f0d344246f%3A0x4e47f19c99b253b1!2s%C3%98stfold%20University%20College!5e0!3m2!1sen!2sno!4v1668428340483!5m2!1sen!2sno"
+                width="600" height="400" style="border:0;" allowfullscreen=""
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
         <div id="footer">
-            <p>Instagram</p>
-            <p>Facebook</p>
-            <p>Twitter</p>
+            <a href="#" class="fa fa-facebook"></a>
+            <a href="#" class="fa fa-twitter"></a>
+            <a href="#" class="fa fa-pinterest"></a> 
         </div>
     </div>
 </body>

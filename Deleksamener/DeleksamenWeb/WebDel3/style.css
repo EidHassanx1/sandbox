@@ -195,6 +195,7 @@ section img {
     #cmsTable ul{
         display: flex;
         flex-direction: column;
+        min-width: 350px;
     }
 }
 
