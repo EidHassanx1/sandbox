@@ -10,7 +10,7 @@
 <body>
     <header>
         <h1>Exam 2</h1>
-        <button id="toggleMenu" aria-label="Open the menu">Menu <img src="menuicon.png" aria-hidden="true"></button>
+        <button id="toggleMenu" aria-label="Open the menu" onclick="opne()">Menu <img src="menuicon.png" aria-hidden="true"></button>
         <nav id="menu">
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -39,6 +39,7 @@
         const menu = document.getElementById("menu")
         const button = document.getElementById("toggleMenu")
 
+
         /* TODO:
          * Funksjon for å åpne/lukke meny:
          * Hvis #menu inneholder klassen .active:
@@ -48,8 +49,22 @@
          * 1) legg til klassen .active på #menu
          * 2) endre knappen til å inneholde teksten Close og bildet closeicon.png
          */
-
         
+        function opne() {
+            menu.classList.remove("active")
+            menu.classList.add("active")
+
+            if (menu.classList.contains("active")){
+                /*menu.classList.add("active")*/
+                src="closeicon.png"
+
+            } /*else if (menu.classList.contains("active")) {
+                menu.class.remove("active")
+            }*/
+        
+        console.log(onclick)
+        //https://www.javascripttutorial.net/dom/css/check-if-an-element-contains-a-class/
+        }
 
         //Variabel for meny-HTML
         //TODO: Skal ikke starte som en tom streng, må inneholde et punkt for å møte oppgaveteksten...
