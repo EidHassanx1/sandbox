@@ -16,7 +16,7 @@
         <button onclick="makeRansom()">Ransomize text</button>
     </section>
     <section id="ransom-note">
-
+        
     </section>
     <script>
         //Prepare array with allowed characters
@@ -26,31 +26,50 @@
         //Create function to run on button click
         function makeRansom() {
             //TODO: Fetch text from textarea
-            const textarea = document.getElementById("text").innerHTML
+            let textarea = document.getElementById("text").value
 
             //TODO: Ensure correct capitalization of text string fetched
-            console.log("text")
+            let text = textarea.toUpperCase();
+            document.getElementById("ransom-note").innerHTML = text
             
             //TODO: Make capitalized text string into array
-            let Tekst = "text"
+            let arrayText = Array.from(text)
+            //console.log(arrayText)
             
             //TODO: Prepare empty string variable for HTML
-            let HTML
+            let html = ""
 
             /* TODO:
              * 1) Go through array of characters
              * 2) Check if capitalized array character is allowed:
-             *    If it is, put HTML for image output into variable for HTML.
-             *    If not, put the character from the array into variable for HTML.
+             *    If it is, put html for image output into variable for html.
+             *    If not, put the character from the array into variable for html.
              * Rules to ALSO check: 
              *    1) If character in array is a period (.), question mark (?), or exclamation mark (!),
              *       use the end.png-file (image of exclamation mark)
-             *    2) If character is a space, insert <span class="space-separator"></span> into variabel for HTML
+             *    2) If character is a space, insert <span class="space-separator"></span> into variabel for html
              * */
-            
+            arrayText.map(text => {
+                if(allowedCharacters.includes(text)) {
+                    html += `<img src="images/${text}.png">`;
+                } else if (text === "."|| text === "!"|| text === "?") {
+                    html += `<img src="images/end.png">`;
+                } else if (text === " ") {
+                    html += `<span class="space-separator"></span>`;
+                } else {
+                    html += text;
+                }
+            });
 
-            //TODO: Write HTML output to #ransom-note
-            
+            //TODO: Write html output to #ransom-note
+            document.getElementById("ransom-note").innerHTML = html
+
+            /*
+            Kilder
+            Discord/Hiø Innføring i Programmering 2022
+            Student Assistent
+            Knut Ole K Magnussen
+            */
         }
     </script>
 </body>

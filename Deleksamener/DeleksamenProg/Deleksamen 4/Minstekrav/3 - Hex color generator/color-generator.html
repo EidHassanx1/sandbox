@@ -42,20 +42,46 @@
             let third = "#" 
 
             //TODO: System/code: to construct hexa-code for primary (six allowed characters):
-            
+            let prime = 6
+            for (let i=0; i<prime; i++) {
+                let random = Math.floor(Math.random() * hexValuesString.length);
+                primary += hexValuesString.substring(random, random+1);
+            }
             //TODO: System/code to construct hexa-code for secondary (six allowed characters):
+            for (let i=0; i<prime; i++) {
+                let random = Math.floor(Math.random() * hexValuesString.length);
+                secondary += hexValuesString.substring(random, random+1);
+            }
             
             //TODO: System/code to construct hexa-code for third (six allowed characters):
-            
+            for (let i=0; i<prime; i++) {
+                let random = Math.floor(Math.random() * hexValuesString.length);
+                third += hexValuesString.substring(random, random+1);
+            }
 
             //TODO: Set the random colors as background color in their respective HTML elements:
+            document.getElementById("primary-color").style.background = primary
+            document.getElementById("secondary-color").style.background = secondary
+            document.getElementById("third-color").style.background = third
             
 
             //TODO: Print the color values to the respective code-containers:
+            document.getElementById("primary-color-code").innerHTML = primary
+            document.getElementById("secondary-color-code").innerHTML = secondary
+            document.getElementById("third-color-code").innerHTML = third
             
         }
 
         //TODO: Make the function run on button click
+
+        document.getElementById("generate").addEventListener("click",generateColors)
+
+
+        /*
+        Kilder
+        Discord/Hiø Innføring i Programmering 2022
+        Student Assistent
+        */
     </script>
 </body>
 </html>
